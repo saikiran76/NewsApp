@@ -3,7 +3,7 @@ import { FiExternalLink } from "react-icons/fi";
 
 export const Card = ({article}) =>{
     return(
-        <div className="border-[#293548] border-1 rounded-lg shadow-md p-2 overflow-hidden w-full md:w-[15rem] font-serif hover:scale-105 duration-150 cursor-pointer h-[24rem]">
+        <div className="border-[#293548] border-1 rounded-lg shadow-md p-2 overflow-hidden w-[30rem] md:w-[15rem] font-serif hover:scale-105 duration-150 cursor-pointer h-[24rem]">
             <img className="h-48 object-cover rounded" src={article.urlToImage} alt={article.title} />
             
             {/* <Link to={`/article/${article.title}`} className="block mt-1 text-lg leading-tight font-medium text-black hover:underline"> */}

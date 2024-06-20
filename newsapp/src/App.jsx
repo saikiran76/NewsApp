@@ -39,12 +39,12 @@ const App = ()=>{
     <div className='w-full'>
       <NavBar/>
       
-        <div className='flex w-full'>
-          <CatBar categories={categories} currentCategory={category} onSelectCategory={handleCategoryChange}/>
+        <div className='block md:flex w-full'>
+          <div><CatBar categories={categories} currentCategory={category} onSelectCategory={handleCategoryChange}/></div>
           {status === 'loading' && <Loading />}
           {status === 'failed' && <Error message={error} />}
           {status === 'succeeded' && (
-          <div className="font-Inter font-bold flex flex-wrap justify-center m-8 gap-4 p-4">
+          <div className="font-Inter font-bold flex flex-wrap justify-center m-1 md:m-8 gap-4 p-1 md:p-4">
             {
             articles.map((article)=>(
               <Card key={article.title} article={article}/>
