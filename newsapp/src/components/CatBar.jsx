@@ -1,6 +1,6 @@
 const CatBar = ({ categories, currentCategory, onSelectCategory }) =>{
     return(
-        <div className="p-10">
+        <div className="p-10 hidden md:block">
             <h2 className="font-semibold text-xl font-Poppin">Categories</h2>
             <ul className="list-none p-1 font-Poppin font-normal">
                 {
