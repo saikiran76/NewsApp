@@ -5,18 +5,25 @@ const API_KEY = '52528d471d614a33a80ce050118344ce';
 
 export const fetchArticles = createAsyncThunk(
   'news/fetchArticles',
-  async ({ category, page }) => {
+  async ({ category, page }, {getState}) => {
+    const state = getState()
+    const cachedArticles = state.news.cache[`${category}-${page}`]
+    if(cachedArticles){
+      return {articles: cachedArticles, fromCache: true};
+    }
+
     const response = await axios.get(
       `https://newsapi.org/v2/top-headlines?country=in&category=${category}&page=${page}&apiKey=${API_KEY}`
     );
     console.log(response.data)
-    return response.data;
+    return {articles: response.data.articles, fromCache: true}
   }
 );
 
 const newsSlice = createSlice({
   name: 'news',
   initialState: {
+    cache: {},
     articles: [],
     status: 'idle',
     error: null,
@@ -28,8 +35,13 @@ const newsSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchArticles.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        // state.status = 'succeeded';
+        state.status = action.payload.fromCache ? `FromCache`:`succeded`;
         state.articles = action.payload.articles;
+        if(!action.payload.fromCache){
+          const { category, page } = action.meta.arg;
+          state.cache[`${category}-${page}`] = action.payload.articles;
+        }
       })
       .addCase(fetchArticles.rejected, (state, action) => {
         state.status = 'failed';
