@@ -14,7 +14,17 @@ export const fetchArticles = createAsyncThunk(
     }
 
     const response = await axios.get(
-      `https://newsapi.org/v2/top-headlines?country=in&category=${category}&page=${page}&apiKey=${API_KEY}`
+      `https://newsapi.org/v2/top-headlines`, {
+      params: {
+        country: 'in',
+        category: category,
+        page: page,
+        apiKey: API_KEY
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
     );
     console.log(response.data)
     return {articles: response.data.articles, fromCache: true}
