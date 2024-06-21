@@ -8,11 +8,11 @@ export const Card = ({article}) =>{
 
     return(
         <div className="border-gray-300 border-[1px] rounded-lg hover:shadow-md p-2 overflow-hidden w-[30rem] md:w-[15rem] font-serif hover:scale-105 duration-150 cursor-pointer h-[24rem] flex flex-col justify-between">
-            <img className="h-48 object-cover rounded" src={article.urlToImage} alt={article.title} />
+            <img className="h-48 object-cover rounded" src={article.image_url} alt={article.title} />
             <div>
                 <h1 className="font-semibold m-2 text-sm">{article.title}</h1>
                 
-                <Link to={`/article/${article.title}`}>
+                <Link to={`/article/${article.uuid}`}>
                     <button
                     onClick={()=>{
                         dispatch(setNull())

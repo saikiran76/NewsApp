@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { fetchArticles } from './utils/newsSlice';
 
-const categories = ['business', 'technology', 'entertainment']; 
+const categories = ['business', 'tech', 'entertainment', 'sports', 'business', 'health', 'food']; 
 
 const App = ()=>{
   const dispatch = useDispatch();
@@ -50,11 +50,11 @@ const App = ()=>{
           <div className="font-Inter font-bold flex flex-wrap justify-center m-1 md:m-8 gap-4 p-1 md:p-4">
             {
               filteredArticles.length !== 0 ? (filteredArticles.map((article)=>(
-                <Card key={article.title} article={article}/>
+                <Card key={article.uuid} article={article}/>
               ))):
               
             articles.map((article)=>(
-              <Card key={article.title} article={article}/>
+              <Card key={article.uuid} article={article}/>
             ))
             }
 
