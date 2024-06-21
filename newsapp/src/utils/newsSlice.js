@@ -25,6 +25,8 @@ const newsSlice = createSlice({
   initialState: {
     cache: {},
     articles: [],
+    filteredArticles:[],
+    searchQuery:'',
     status: 'idle',
     error: null,
   },
@@ -35,6 +37,9 @@ const newsSlice = createSlice({
         article.title.toLowerCase().includes(state.searchQuery.toLowerCase())
       );
     },
+    setNull:(state)=>{
+      state.filteredArticles = []
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -57,5 +62,5 @@ const newsSlice = createSlice({
   },
 });
 
-export const {setSearchQuery} = newsSlice.actions;
+export const {setSearchQuery, setNull} = newsSlice.actions;
 export default newsSlice.reducer;

@@ -17,6 +17,7 @@ const App = ()=>{
   const articles = useSelector((state)=>state.news.articles)
   const status = useSelector((state)=>state.news.status)
   const error = useSelector((state)=> state.news.error)
+  const filteredArticles = useSelector((state)=>state.news.filteredArticles)
 
   const [category, setCategory] = useState(categories[0])
   const [page, setPage] = useState(1)
@@ -48,6 +49,10 @@ const App = ()=>{
           {(status === 'succeeded' || status === "FromCache") && (
           <div className="font-Inter font-bold flex flex-wrap justify-center m-1 md:m-8 gap-4 p-1 md:p-4">
             {
+              filteredArticles.length !== 0 ? (filteredArticles.map((article)=>(
+                <Card key={article.title} article={article}/>
+              ))):
+              
             articles.map((article)=>(
               <Card key={article.title} article={article}/>
             ))
