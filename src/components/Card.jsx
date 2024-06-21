@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import { FiExternalLink } from "react-icons/fi";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setNull } from '../utils/newsSlice';
 
 export const Card = ({article}) =>{
-    // const filteredArticles = useSelector((state)=>state.news.filteredArticles)
     const dispatch = useDispatch();
 
     return(
