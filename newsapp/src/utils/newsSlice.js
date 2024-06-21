@@ -28,7 +28,14 @@ const newsSlice = createSlice({
     status: 'idle',
     error: null,
   },
-  reducers: {},
+  reducers: {
+    setSearchQuery: (state, action) => {
+      state.searchQuery = action.payload;
+      state.filteredArticles = state.articles.filter(article =>
+        article.title.toLowerCase().includes(state.searchQuery.toLowerCase())
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchArticles.pending, (state) => {
@@ -50,4 +57,5 @@ const newsSlice = createSlice({
   },
 });
 
+export const {setSearchQuery} = newsSlice.actions;
 export default newsSlice.reducer;

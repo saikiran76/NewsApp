@@ -39,7 +39,7 @@ const App = ()=>{
     <div className='w-full'>
       <NavBar/>
       <div className="w-full border-gray-600 border-[1px] border-t border-b text-xs p-3 font-Poppin text-center">
-          Your one stop destination for Articles & News
+          Your one stop destination for Articles & News - Developed by KSK
       </div>
         <div className='block md:flex w-full'>
           <div><CatBar categories={categories} currentCategory={category} onSelectCategory={handleCategoryChange}/></div>
