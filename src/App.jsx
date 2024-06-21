@@ -8,6 +8,8 @@ import {Error} from './components/Error';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { fetchArticles } from './utils/newsSlice';
+import { Provider } from 'react-redux';
+import store from './utils/store';
 
 
 const categories = ['business', 'technology', 'entertainment']; 
@@ -37,6 +39,7 @@ const App = ()=>{
 
   return(
     <>
+    <Provider store={store}>
     <div className='w-full'>
       <NavBar/>
       <div className="w-full border-gray-600 border-[1px] border-t border-b text-xs p-3 font-Poppin text-center">
@@ -66,7 +69,7 @@ const App = ()=>{
         <Pagination currentPage={page} totalPages={6} onPageChange={handlePageChange} />
       
     </div>
-
+    </Provider>
     </>
   )
 }
