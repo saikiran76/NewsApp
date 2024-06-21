@@ -11,10 +11,6 @@ export const NavBar = ()=>{
     const dispatch = useDispatch()
     const suggestionsRef = useRef(null);
 
-    // const handleSearch = () =>{
-    //     articles.array.forEach(element => {
-    //         if(query.toLowerCase().includes(element.title.toLowerCase()))
-    //     });
     const handleSearchChange = (e) =>{
         const value = e.target.value;
         setQuery(value);
@@ -61,11 +57,11 @@ export const NavBar = ()=>{
                  className="rounded p-2 border-gray-300 border-[1.5px] m-1 text-md font-Poppin mt-5 md:mt-0"
                  placeholder="Search Articles"/>
                 {suggestions.length > 0 && (
-                    <ul ref={suggestionsRef} className="absolute top-16 bg-white border border-gray-300 w-[50%] mt-1 rounded shadow-lg z-10 text-xs font-serif">
+                    <ul ref={suggestionsRef} className="absolute top-28 md:top-16 left-14 md:left-0 bg-white border border-gray-300 w-[50%] mt-1 rounded shadow-lg z-10 text-xs font-serif">
                         {suggestions.map((suggestion) => (
                             <li
                                 key={suggestion.title}
-                                className="p-2 hover:bg-gray-200 cursor-pointer"
+                                className="p-3 hover:bg-gray-200 cursor-pointer"
                                 onClick={() => handleClick(suggestion.title)}
                             >
                                 {suggestion.title}
